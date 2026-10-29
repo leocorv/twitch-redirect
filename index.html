@@ -4,32 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rejoindre mon live Twitch</title>
+  <title>Redirection Twitch</title>
+  <meta name="robots" content="noindex">
 </head>
-<body style="font-family:sans-serif;text-align:center;padding:50px 20px">
-  <h2>Rejoins mon live sur Twitch !</h2>
-  <p>Ouverture de l'application Twitch...</p>
-  <button id="open" style="padding:16px;font-size:18px">
-    Ouvrir dans Twitch
-  </button>
-  <p><a id="web">Regarder sur le site Twitch</a></p>
-
+<body>
   <script>
     const pseudo = "nerixtv";
-    const app = `twitch://stream/${pseudo}`;
-    const web = `https://www.twitch.tv/${pseudo}`;
 
-    document.getElementById("web").href = web;
+    const appUrl = `twitch://stream/${pseudo}`;
+    const webUrl = `https://www.twitch.tv/${pseudo}`;
 
-    function openTwitch() {
-      window.location.href = app;
-    }
+    // Tentative immédiate d'ouverture de Twitch
+    window.location.replace(appUrl);
+  </script>
 
-    document.getElementById("open")
-      .addEventListener("click", openTwitch);
+  <p>
+    Si Twitch ne s'ouvre pas automatiquement,
+    <a id="fallback" href="#">ouvrir le live</a>.
+  </p>
 
-    // Tentative automatique
-    openTwitch();
+  <script>
+    document.getElementById("fallback").href =
+      `https://www.twitch.tv/${pseudo}`;
   </script>
 </body>
 </html>
