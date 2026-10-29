@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rejoindre mon live Twitch</title>
+</head>
+<body style="font-family:sans-serif;text-align:center;padding:50px 20px">
+  <h2>Rejoins mon live sur Twitch !</h2>
+  <p>Ouverture de l'application Twitch...</p>
+  <button id="open" style="padding:16px;font-size:18px">
+    Ouvrir dans Twitch
+  </button>
+  <p><a id="web">Regarder sur le site Twitch</a></p>
+
+  <script>
+    const pseudo = "nerixtv";
+    const app = `twitch://stream/${pseudo}`;
+    const web = `https://www.twitch.tv/${pseudo}`;
+
+    document.getElementById("web").href = web;
+
+    function openTwitch() {
+      window.location.href = app;
+    }
+
+    document.getElementById("open")
+      .addEventListener("click", openTwitch);
+
+    // Tentative automatique
+    openTwitch();
+  </script>
+</body>
+</html>
